@@ -33,22 +33,19 @@ router.post('/', async (req, res) => {
       return res.status(400).json({ success: false, message: 'Message cannot exceed 1000 characters' });
     }
 
-    const contact = new Contact({
-      name: name.trim(),
-      email: email.trim().toLowerCase(),
-      message: message.trim(),
-    });
-
-    await contact.save();
+    console.log("Contact Form Submission:");
+console.log({
+  name: name.trim(),
+  email: email.trim().toLowerCase(),
+  message: message.trim(),
+});
 
     res.status(201).json({
       success: true,
       message: 'Thank you! Your message has been sent successfully.',
       data: {
-        id: contact._id,
-        name: contact.name,
-        email: contact.email,
-        createdAt: contact.createdAt,
+        name,
+        email,
       },
     });
   } catch (error) {

@@ -27,6 +27,8 @@ const connectDB = async () => {
   try {
     const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/portfolio';
 
+console.log("MONGO_URI =", mongoURI);
+
     await mongoose.connect(mongoURI);
     console.log('MongoDB connected successfully');
   } catch (error) {
